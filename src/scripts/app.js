@@ -27,7 +27,7 @@
   function init () {
     app.attachEventListeners();
 
-    app.inputEventDateStart.min = "2026-05-05T16:15:23";
+    app.inputEventDateStart.min = "2026-05-05T16:15:23"; //FIXME
   }
 
   function attachEventListeners() {
@@ -95,7 +95,7 @@
   function prepareValidation() {
     app.invalidInputs = [];
     app.validationAlert.setAttribute('hidden', 'hidden');
-    document.querySelectorAll('.has-warning').forEach(elem => elem.classList.remove('has-warning'));
+    Array.from(document.querySelectorAll('.has-warning')).forEach(elem => elem.classList.remove('has-warning'));
   }
 
 })();
