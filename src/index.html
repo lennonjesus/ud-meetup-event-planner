@@ -12,51 +12,44 @@
   <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css" media="screen" title="no title" charset="utf-8" />
   <link rel="stylesheet" href="../../bower_components/bootstrap-material-design/dist/css/bootstrap-material-design.min.css" media="screen" title="no title" charset="utf-8" />
 
-  <link rel="stylesheet" href="styles/main.css" media="screen" title="no title" charset="utf-8" />
-
 </head>
 <body>
 
   <div class="container">
 
-    <!-- Navbar -->
-    <div class="navbar navbar-inverse">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-material-light-blue-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="javascript:void(0)">Event Planner</a>
-        </div>
-        <div class="navbar-collapse collapse navbar-material-light-blue-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="javascript:void(0)">Active</a></li>
-            <li><a href="javascript:void(0)">Link</a></li>
-            <li class="dropdown">
-              <a href="index.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown
-                <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="javascript:void(0)">Action</a></li>
-                  <li><a href="javascript:void(0)">Another action</a></li>
-                  <li><a href="javascript:void(0)">Something else here</a></li>
-                  <li class="divider"></li>
-                  <li class="dropdown-header">Dropdown header</li>
-                  <li><a href="javascript:void(0)">Separated link</a></li>
-                  <li><a href="javascript:void(0)">One more separated link</a></li>
-                </ul>
-              </li>
+      <!-- Navbar -->
+      <div class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-material-light-blue-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="javascript:void(0)">Event Planner</a>
+          </div>
+          <div class="navbar-collapse collapse navbar-material-light-blue-collapse">
+            <ul class="nav navbar-nav">
             </ul>
-            <form class="navbar-form navbar-left">
-              <div class="form-group">
-                <input type="text" class="form-control col-sm-8" placeholder="Search">
-              </div>
-            </form>
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="javascript:void(0)">Link</a></li>
-              <li><a href="javascript:void(0)">Link</a></li>
-
+              <li>
+                <a href="javascript:void(0)">
+                  <i class="material-icons">account_box</i>
+                  Create Account
+                </a>
+              </li>
+              <li>
+                <a href="javascript:void(0)">
+                  <i class="material-icons">event</i>
+                  Add Event
+                </a>
+              </li>
+              <li>
+                <a href="javascript:void(0)">
+                  <i class="material-icons">view_list</i>
+                  Events list
+                </a>
+              </li>
             </ul>
           </div>
         </div>
@@ -67,18 +60,19 @@
 
       <!-- Create Account -->
       <div class="well">
-
-        <div class="progress">
-          <div class="progress-bar progress-bar-warning" style="width: 60%;"></div>
-        </div>
-
-        <form class="form-horizontal">
+        <form class="form-horizontal" id="frmAccountCreate">
           <fieldset>
             <legend>
               Account creation
             </legend>
 
             <div class="col-md-2">
+
+              <div class="alert alert-danger" id="validationAlert" hidden="hidden">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                Please, review and correct the provided information.
+              </div>
+
               <div class="form-group label-floating">
                 <label class="control-label" for="inputName">Name</label>
                 <input class="form-control" id="inputName" type="text" required autocomplete="name">
@@ -87,19 +81,19 @@
 
               <div class="form-group label-floating">
                 <label class="control-label" for="inputEmail">E-mail</label>
-                <input class="form-control" id="inputEmail" type="email" required autocomplete="email">
+                <input class="form-control" id="inputEmail" type="email" autocomplete="email">
                 <p class="help-block">Ex: youemail@domain.com</p>
               </div>
 
               <div class="form-group label-floating">
-                <label class="control-label" for="inputEmail">Password</label>
-                <input class="form-control" id="inputPassword" required type="password">
+                <label class="control-label" for="inputPassword">Password</label>
+                <input class="form-control" id="inputPassword" type="password">
                 <p class="help-block">Minimum 8 digits, with numbers and letters</p>
               </div>
 
               <div class="form-group label-floating">
-                <label class="control-label" for="inputEmail">Retype password</label>
-                <input class="form-control" id="inputPasswordRetype" required type="password">
+                <label class="control-label" for="inputPasswordRetype">Retype password</label>
+                <input class="form-control" id="inputPasswordRetype" type="password">
                 <p class="help-block">Please, confirm your password</p>
               </div>
             </div>
@@ -109,10 +103,11 @@
             </p>
 
             <div class="text-center">
-              <a href="javascript:void(0)" class="btn btn-raised btn-inverse" id="btnCreateAccount">
+              <button type="submit" class="btn btn-raised btn-inverse btn-raised" id="btnCreateAccount">
                 Create
                 <i class="material-icons">save</i>
-              </a>
+              </button>
+
             </div>
 
           </fieldset>
@@ -142,7 +137,14 @@
 
               <div class="form-group label-floating">
                 <label class="control-label" for="inputEventType">Type</label>
-                <input class="form-control" id="inputEventType" type="text" required>
+                <input class="form-control" id="inputEventType" list="typeList" required>
+                <datalist id="typeList">"></option>
+                  <option value="Birthday"></option>
+                  <option value="Conference Talk"></option>
+                  <option value="Party"></option>
+                  <option value="Show"></option>
+                  <option value="Wedding"></option>
+                </datalist>
                 <p class="help-block">Ex: birthday party, conference talk, wedding, etc.</p>
               </div>
 
@@ -297,10 +299,18 @@
     <script src="../../bower_components/jquery/dist/jquery.min.js"></script>
     <script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="../../bower_components/bootstrap-material-design/dist/js/material.min.js"></script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkht_JbA2hM6f3NK7dwM-yX1C7M6x1_Pg&signed_in=true&libraries=places&callback=initAutocomplete" async defer></script>
+
     <script src="scripts/app.js"></script>
 
     <script type="text/javascript">
-    $.material.init();
+
+      function initAutocomplete() {
+        console.log('Google Places Autocomplete API callback function called.');
+      }
+
+      $.material.init();
     </script>
   </body>
   </html>
