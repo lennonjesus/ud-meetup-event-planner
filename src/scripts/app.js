@@ -4,26 +4,32 @@
   var app = {
     init: init,
     attachEventListeners: attachEventListeners,
-    validate: validate,
-
-    user: {},
 
     invalidInputs: [],
 
-    accountCreationSuccessAlert: document.querySelector('#accountCreationSuccessAlert'),
-    validationAlert: document.querySelector('#validationAlert'),
+    mnCreateAccount: document.querySelector('#mnCreateAccount'),
+    mnCreateEvent: document.querySelector('#mnCreateEvent'),
+    mnListEvents: document.querySelector('#mnListEvents'),
 
     accountCreatePanel: document.querySelector('#accountCreatePanel'),
+    eventCreatePanel: document.querySelector('#eventCreatePanel'),
+    eventListPanel: document.querySelector('#eventListPanel'),
+
+    user: {},
+
+    validationAlert: document.querySelector('#validationAlert'),
+
+    accountCreationSuccessAlert: document.querySelector('#accountCreationSuccessAlert'),
     frmAccountCreate: document.querySelector('#frmAccountCreate'),
     btnCreateAccount: document.querySelector('#btnCreateAccount'),
     inputName: document.querySelector('#inputName'),
     inputEmail: document.querySelector('#inputEmail'),
     inputPassword: document.querySelector('#inputPassword'),
     inputPasswordRetype: document.querySelector('#inputPasswordRetype'),
+    validateAccountCreate: validateAccountCreate,
 
     inputEventDateStart: document.querySelector('#inputEventDateStart'),
-    inputEventDateEnd: document.querySelector('#inputEventDateEnd')
-
+    inputEventDateEnd: document.querySelector('#inputEventDateEnd'),
   };
 
   app.init();
@@ -36,10 +42,40 @@
 
   function attachEventListeners() {
 
+    app.mnCreateAccount.addEventListener('click', event => {
+      accountCreatePanel.removeAttribute('hidden');
+      eventCreatePanel.setAttribute('hidden', 'hidden');
+      eventListPanel.setAttribute('hidden', 'hidden');
+
+      app.mnCreateAccount.parentElement.classList.add('active');
+      app.mnCreateEvent.parentElement.classList.remove('active');
+      app.mnListEvents.parentElement.classList.remove('active');
+    });
+
+    app.mnCreateEvent.addEventListener('click', event => {
+      eventCreatePanel.removeAttribute('hidden');
+      accountCreatePanel.setAttribute('hidden', 'hidden');
+      eventListPanel.setAttribute('hidden', 'hidden');
+
+      app.mnCreateEvent.parentElement.classList.add('active');
+      app.mnCreateAccount.parentElement.classList.remove('active');
+      app.mnListEvents.parentElement.classList.remove('active');
+    });
+
+    app.mnListEvents.addEventListener('click', event => {
+      eventListPanel.removeAttribute('hidden');
+      accountCreatePanel.setAttribute('hidden', 'hidden');
+      eventCreatePanel.setAttribute('hidden', 'hidden');
+
+      app.mnListEvents.parentElement.classList.add('active');
+      app.mnCreateAccount.parentElement.classList.remove('active');
+      app.mnCreateEvent.parentElement.classList.remove('active');
+    });
+
     app.btnCreateAccount.addEventListener('click', event => {
       event.preventDefault();
 
-      app.validate();
+      app.validateAccountCreate();
 
       let hasErrors = app.invalidInputs.length > 0;
 
@@ -62,12 +98,10 @@
             }, 3000);
           });
         };
-
-
     });
   }
 
-  function validate() {
+  function validateAccountCreate() {
 
     prepareValidation();
 

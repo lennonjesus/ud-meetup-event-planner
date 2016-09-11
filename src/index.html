@@ -15,6 +15,14 @@
 </head>
 <body>
 
+  <!-- <p>
+    &nbsp;
+  </p>
+
+  <p>
+    &nbsp;
+  </p> -->
+
   <div class="container">
 
       <!-- Navbar -->
@@ -33,20 +41,20 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li>
-                <a href="javascript:void(0)">
-                  <i class="material-icons">account_box</i>
+                <a href="#" id="mnCreateAccount" data-toggle="collapse" data-target=".navbar-material-light-blue-collapse">
+                  <i class="material-icons" >account_box</i>
                   Create Account
                 </a>
               </li>
               <li>
-                <a href="javascript:void(0)">
+                <a href="#" id="mnCreateEvent" data-toggle="collapse" data-target=".navbar-material-light-blue-collapse">
                   <i class="material-icons">event</i>
                   Add Event
                 </a>
               </li>
               <li>
-                <a href="javascript:void(0)">
-                  <i class="material-icons">view_list</i>
+                <a href="#" id="mnListEvents" data-toggle="collapse" data-target=".navbar-material-light-blue-collapse">
+                  <i class="material-icons" >view_list</i>
                   Events list
                 </a>
               </li>
@@ -56,10 +64,8 @@
       </div>
       <!-- End Navbar -->
 
-
-
       <!-- Create Account -->
-      <div class="well">
+      <div class="well" id="accountCreatePanel" hidden="hidden">
 
         <div class="alert alert-dismissible alert-success" id="accountCreationSuccessAlert" hidden>
           <button type="button" class="close" data-dismiss="alert">×</button>
@@ -87,19 +93,19 @@
 
               <div class="form-group label-floating">
                 <label class="control-label" for="inputEmail">E-mail</label>
-                <input class="form-control" id="inputEmail" type="email" autocomplete="email">
+                <input class="form-control" id="inputEmail" type="email" required autocomplete="email">
                 <p class="help-block">Ex: youemail@domain.com</p>
               </div>
 
               <div class="form-group label-floating">
                 <label class="control-label" for="inputPassword">Password</label>
-                <input class="form-control" id="inputPassword" type="password">
+                <input class="form-control" id="inputPassword" type="password" required>
                 <p class="help-block">Minimum 8 digits, with numbers and letters</p>
               </div>
 
               <div class="form-group label-floating">
                 <label class="control-label" for="inputPasswordRetype">Retype password</label>
-                <input class="form-control" id="inputPasswordRetype" type="password">
+                <input class="form-control" id="inputPasswordRetype" type="password" required>
                 <p class="help-block">Please, confirm your password</p>
               </div>
             </div>
@@ -122,11 +128,7 @@
       <!-- End Create Account -->
 
       <!-- Create Event -->
-      <div class="well">
-
-        <div class="progress">
-          <div class="progress-bar progress-bar-warning" style="width: 60%;"></div>
-        </div>
+      <div class="well" id="eventCreatePanel">
 
         <form class="form-horizontal">
           <fieldset>
@@ -199,14 +201,14 @@
                 <input class="form-control" id="inputEventLocation" type="text" required>
                 <p class="help-block">The event address</p>
               </div>
-            </div>
 
-            <div class="form-group label-floating">
-              <label for="textArea" class="col-md-2 control-label">Guest notification</label>
+              <div class="form-group label-floating">
+                <label for="textArea" class="control-label">Guest notification</label>
 
-              <div class="col-md-10">
-                <textarea class="form-control" rows="3" id="textArea"></textarea>
-                <span class="help-block">Send a note to your guests</span>
+                <div class="">
+                  <textarea class="form-control" rows="3" id="textArea"></textarea>
+                  <span class="help-block">Send a note to your guests, if you want</span>
+                </div>
               </div>
             </div>
 
@@ -227,7 +229,7 @@
       <!-- End Create Event -->
 
       <!-- List Events -->
-      <div class="well well-lg">
+      <div class="well well-lg" id="eventListPanel" hidden="hidden">
         <div class="panel panel-primary">
           <div class="panel-heading">
             <h3 class="panel-title"><i class="material-icons text-right">event</i> Encontro Regional 2016</h3>
