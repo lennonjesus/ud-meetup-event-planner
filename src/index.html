@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Planner</title>
+
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
+
+  <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css" media="screen" title="no title" charset="utf-8" />
+  <link rel="stylesheet" href="../../bower_components/bootstrap-material-design/dist/css/bootstrap-material-design.min.css" media="screen" title="no title" charset="utf-8" />
+
+  <link rel="stylesheet" href="styles/main.css" media="screen" title="no title" charset="utf-8" />
+
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- Navbar -->
+    <div class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-material-light-blue-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="javascript:void(0)">Event Planner</a>
+        </div>
+        <div class="navbar-collapse collapse navbar-material-light-blue-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="javascript:void(0)">Active</a></li>
+            <li><a href="javascript:void(0)">Link</a></li>
+            <li class="dropdown">
+              <a href="index.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown
+                <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="javascript:void(0)">Action</a></li>
+                  <li><a href="javascript:void(0)">Another action</a></li>
+                  <li><a href="javascript:void(0)">Something else here</a></li>
+                  <li class="divider"></li>
+                  <li class="dropdown-header">Dropdown header</li>
+                  <li><a href="javascript:void(0)">Separated link</a></li>
+                  <li><a href="javascript:void(0)">One more separated link</a></li>
+                </ul>
+              </li>
+            </ul>
+            <form class="navbar-form navbar-left">
+              <div class="form-group">
+                <input type="text" class="form-control col-sm-8" placeholder="Search">
+              </div>
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="javascript:void(0)">Link</a></li>
+              <li><a href="javascript:void(0)">Link</a></li>
+
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- End Navbar -->
+
+
+
+      <!-- Create Account -->
+      <div class="well">
+
+        <div class="progress">
+          <div class="progress-bar progress-bar-warning" style="width: 60%;"></div>
+        </div>
+
+        <form class="form-horizontal">
+          <fieldset>
+            <legend>
+              Account creation
+            </legend>
+
+            <div class="col-md-2">
+              <div class="form-group label-floating">
+                <label class="control-label" for="inputName">Name</label>
+                <input class="form-control" id="inputName" type="text" required autocomplete="name">
+                <p class="help-block">Please, tell us your name</p>
+              </div>
+
+              <div class="form-group label-floating">
+                <label class="control-label" for="inputEmail">E-mail</label>
+                <input class="form-control" id="inputEmail" type="email" required autocomplete="email">
+                <p class="help-block">Ex: youemail@domain.com</p>
+              </div>
+
+              <div class="form-group label-floating">
+                <label class="control-label" for="inputEmail">Password</label>
+                <input class="form-control" id="inputPassword" required type="password">
+                <p class="help-block">Minimum 8 digits, with numbers and letters</p>
+              </div>
+
+              <div class="form-group label-floating">
+                <label class="control-label" for="inputEmail">Retype password</label>
+                <input class="form-control" id="inputPasswordRetype" required type="password">
+                <p class="help-block">Please, confirm your password</p>
+              </div>
+            </div>
+
+            <p>
+              &nbsp;
+            </p>
+
+            <div class="text-center">
+              <a href="javascript:void(0)" class="btn btn-raised btn-inverse" id="btnCreateAccount">
+                Create
+                <i class="material-icons">save</i>
+              </a>
+            </div>
+
+          </fieldset>
+        </form>
+      </div>
+      <!-- End Create Account -->
+
+      <!-- Create Event -->
+      <div class="well">
+
+        <div class="progress">
+          <div class="progress-bar progress-bar-warning" style="width: 60%;"></div>
+        </div>
+
+        <form class="form-horizontal">
+          <fieldset>
+            <legend>
+              Event creation
+            </legend>
+
+            <div class="col-md-2">
+              <div class="form-group label-floating">
+                <label class="control-label" for="inputName">Event name</label>
+                <input class="form-control" id="inputName" type="text" required>
+                <p class="help-block">The name of your event</p>
+              </div>
+
+              <div class="form-group label-floating">
+                <label class="control-label" for="inputEventType">Type</label>
+                <input class="form-control" id="inputEventType" type="text" required>
+                <p class="help-block">Ex: birthday party, conference talk, wedding, etc.</p>
+              </div>
+
+              <div class="form-group label-floating">
+                <label class="control-label" for="inputEventHost">Host</label>
+                <input class="form-control" id="inputEventHost" type="text" required>
+                <p class="help-block">Who is the event host?</p>
+              </div>
+
+              <div class="form-group label-floating">
+                <label class="control-label" for="inputEventDateStart">Start</label>
+                <input class="form-control" id="inputEventDateStart" type="date" required>
+              </div>
+
+              <div class="form-group label-floating">
+                <label class="control-label" for="inputEventDateEnd">End</label>
+                <input class="form-control" id="inputEventDateEnd" type="datetime-local" required>
+              </div>
+
+              <div class="form-group label-floating">
+                <label class="control-label" for="addon2">Add guest</label>
+                <div class="input-group">
+                  <input type="text" id="addon2" class="form-control">
+                  <p class="help-block">Type the name then use plus button to add to the guest list</p>
+                  <span class="input-group-btn">
+                    <button type="button" class="btn btn-primary btn-fab btn-fab-mini">
+                      <i class="material-icons">add</i>
+                    </button>
+                  </span>
+
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="control-label" for="addon2">Guest list</label>
+                <div class="">
+                  <span class="label label-info">Lennon Jesus</span>
+                  <span class="label label-info">Carla Vidal Oliveira de Lima</span>
+                  <span class="label label-info">Marley</span>
+                  <span class="label label-info">Vera Alice de Azevedo Jesus</span>
+                </div>
+              </div>
+
+              <div class="form-group label-floating">
+                <label class="control-label" for="inputEventType">Location</label>
+                <input class="form-control" id="inputEventLocation" type="text" required>
+                <p class="help-block">The event address</p>
+              </div>
+            </div>
+
+            <div class="form-group label-floating">
+              <label for="textArea" class="col-md-2 control-label">Guest notification</label>
+
+              <div class="col-md-10">
+                <textarea class="form-control" rows="3" id="textArea"></textarea>
+                <span class="help-block">Send a note to your guests</span>
+              </div>
+            </div>
+
+            <p>
+              &nbsp;
+            </p>
+
+            <div class="text-center">
+              <a href="javascript:void(0)" class="btn btn-raised btn-inverse" id="btnCreateAccount">
+                Create
+                <i class="material-icons">save</i>
+              </a>
+            </div>
+
+          </fieldset>
+        </form>
+      </div>
+      <!-- End Create Event -->
+
+      <!-- List Events -->
+      <div class="well well-lg">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title"><i class="material-icons text-right">event</i> Encontro Regional 2016</h3>
+          </div>
+          <div class="panel-body">
+
+            <div class="text-right">
+              <p class="text-muted">From Sep 10 2016 12:00 to Sep 15 2016 19:30</p>
+            </div>
+
+            <div class="text-right">
+              <span class="label label-success">motorcycle</span>
+            </div>
+
+            <p>
+              &nbsp;
+            </p>
+
+            <div class="text-center">
+
+              <a href="javascript:void(0)" class="btn btn-raised btn-info" id="btnCreateAccount">
+                <i class="material-icons">pageview</i>
+                Details
+              </a>
+
+              <a href="javascript:void(0)" class="btn btn-raised btn-warning" id="btnCreateAccount">
+                <i class="material-icons">map</i>
+                Map
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title"><i class="material-icons text-right">event</i> Encontro Regional 2016</h3>
+          </div>
+          <div class="panel-body">
+
+            <div class="text-right">
+              <p class="text-muted">From Sep 10 2016 12:00 to Sep 15 2016 19:30</p>
+            </div>
+
+            <div class="text-right">
+              <span class="label label-success">motorcycle</span>
+            </div>
+
+            <p>
+              &nbsp;
+            </p>
+
+            <div class="text-center">
+
+              <a href="javascript:void(0)" class="btn btn-raised btn-info" id="btnCreateAccount">
+                <i class="material-icons">pageview</i>
+                Details
+              </a>
+
+              <a href="javascript:void(0)" class="btn btn-raised btn-warning" id="btnCreateAccount">
+                <i class="material-icons">map</i>
+                Map
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <!-- End List Events -->
+
+    </div>
+
+    <!-- <script src="scripts/localforage.1.2.4.min.js"></script> -->
+
+    <script src="../../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../../bower_components/bootstrap-material-design/dist/js/material.min.js"></script>
+    <script src="scripts/app.js"></script>
+
+    <script type="text/javascript">
+    $.material.init();
+    </script>
+  </body>
+  </html>
