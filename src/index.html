@@ -60,6 +60,12 @@
 
       <!-- Create Account -->
       <div class="well">
+
+        <div class="alert alert-dismissible alert-success" id="accountCreationSuccessAlert" hidden>
+          <button type="button" class="close" data-dismiss="alert">×</button>
+          <strong>Success!</strong> Your account hass been created.
+        </div>
+
         <form class="form-horizontal" id="frmAccountCreate">
           <fieldset>
             <legend>
@@ -299,6 +305,8 @@
     <script src="../../bower_components/jquery/dist/jquery.min.js"></script>
     <script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="../../bower_components/bootstrap-material-design/dist/js/material.min.js"></script>
+
+    <script src="../../bower_components/localforage/dist/localforage.min.js"></script>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkht_JbA2hM6f3NK7dwM-yX1C7M6x1_Pg&signed_in=true&libraries=places&callback=initAutocomplete" async defer></script>
 

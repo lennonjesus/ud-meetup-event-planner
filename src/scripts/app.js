@@ -6,10 +6,14 @@
     attachEventListeners: attachEventListeners,
     validate: validate,
 
+    user: {},
+
     invalidInputs: [],
 
+    accountCreationSuccessAlert: document.querySelector('#accountCreationSuccessAlert'),
     validationAlert: document.querySelector('#validationAlert'),
 
+    accountCreatePanel: document.querySelector('#accountCreatePanel'),
     frmAccountCreate: document.querySelector('#frmAccountCreate'),
     btnCreateAccount: document.querySelector('#btnCreateAccount'),
     inputName: document.querySelector('#inputName'),
@@ -43,8 +47,23 @@
         app.invalidInputs.map(elem => elem.parentElement.classList.add('has-warning'));
         app.validationAlert.removeAttribute('hidden');
       } else {
-        app.frmAccountCreate.submit();
-      }
+
+        app.user.name = inputName.value;
+        app.user.email = inputEmail.value;
+        app.user.password = inputPassword.value;
+
+        localforage.setItem('loggedUser',
+          JSON.stringify(app.user)).then(value => {
+            app.frmAccountCreate.setAttribute('hidden', 'hidden');
+            app.accountCreationSuccessAlert.removeAttribute('hidden');
+
+            setTimeout(() => {
+              app.accountCreationSuccessAlert.parentElement.setAttribute('hidden', 'hidden');
+            }, 3000);
+          });
+        };
+
+
     });
   }
 
@@ -97,5 +116,13 @@
     app.validationAlert.setAttribute('hidden', 'hidden');
     Array.from(document.querySelectorAll('.has-warning')).forEach(elem => elem.classList.remove('has-warning'));
   }
+
+  // localforage.setItem('selectedCities',
+  //     JSON.stringify(app.selectedCities)).then(value => console.log('Selected cities saved'));
+  // };
+  //
+  // localforage.getItem('selectedCities').then(value => {
+  //   app.selectedCities = value;
+  // });
 
 })();
