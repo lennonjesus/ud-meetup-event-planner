@@ -15,13 +15,19 @@
     inputName: document.querySelector('#inputName'),
     inputEmail: document.querySelector('#inputEmail'),
     inputPassword: document.querySelector('#inputPassword'),
-    inputPasswordRetype: document.querySelector('#inputPasswordRetype')
+    inputPasswordRetype: document.querySelector('#inputPasswordRetype'),
+
+    inputEventDateStart: document.querySelector('#inputEventDateStart'),
+    inputEventDateEnd: document.querySelector('#inputEventDateEnd')
+
   };
 
   app.init();
 
   function init () {
     app.attachEventListeners();
+
+    app.inputEventDateStart.min = "2026-05-05T16:15:23";
   }
 
   function attachEventListeners() {

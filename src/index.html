@@ -131,13 +131,13 @@
             <div class="col-md-2">
               <div class="form-group label-floating">
                 <label class="control-label" for="inputName">Event name</label>
-                <input class="form-control" id="inputName" type="text" required>
+                <input class="form-control" id="inputName" type="text">
                 <p class="help-block">The name of your event</p>
               </div>
 
               <div class="form-group label-floating">
                 <label class="control-label" for="inputEventType">Type</label>
-                <input class="form-control" id="inputEventType" list="typeList" required>
+                <input class="form-control" id="inputEventType" list="typeList">
                 <datalist id="typeList">"></option>
                   <option value="Birthday"></option>
                   <option value="Conference Talk"></option>
@@ -150,18 +150,18 @@
 
               <div class="form-group label-floating">
                 <label class="control-label" for="inputEventHost">Host</label>
-                <input class="form-control" id="inputEventHost" type="text" required>
+                <input class="form-control" id="inputEventHost" type="text">
                 <p class="help-block">Who is the event host?</p>
               </div>
 
-              <div class="form-group label-floating">
+              <div class="form-group">
                 <label class="control-label" for="inputEventDateStart">Start</label>
-                <input class="form-control" id="inputEventDateStart" type="date" required>
+                <input class="form-control" id="inputEventDateStart" type="datetime-local">
               </div>
 
-              <div class="form-group label-floating">
+              <div class="form-group">
                 <label class="control-label" for="inputEventDateEnd">End</label>
-                <input class="form-control" id="inputEventDateEnd" type="datetime-local" required>
+                <input class="form-control" id="inputEventDateEnd" type="datetime-local" placeholder="">
               </div>
 
               <div class="form-group label-floating">
