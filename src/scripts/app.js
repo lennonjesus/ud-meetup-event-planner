@@ -170,7 +170,7 @@
 
     // shouldHaveGuests(app.eventGuestList); FIXME
 
-    // shouldDateEndAfterDateStart
+    shouldDateEndAfterDateStart(app.inputEventDateStart, app.inputEventDateEnd);
   }
 
   function shouldNotBeEmpty(elem) {
@@ -197,7 +197,22 @@
 
   function shouldBeEqualsPasswords(elem1, elem2) {
     if(elem1.value !== elem2.value) {
-        app.invalidInputs.push(elem2);
+      app.invalidInputs.push(elem2);
+    }
+  }
+
+  // FIXME
+  function shouldDateEndAfterDateStart(elem1, elem2) {
+
+    let start = new Date(elem1.value);
+    let end = new Date(elem2.value);
+
+    console.log(start);
+    console.log(end);
+
+    if (start < end) {
+      app.invalidInputs.push(elem2);
+      console.log('invalid');
     }
   }
 
