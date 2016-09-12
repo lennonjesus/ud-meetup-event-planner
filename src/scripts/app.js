@@ -18,26 +18,36 @@
     user: {},
 
     validationAlert: document.querySelector('#validationAlert'),
-
     accountCreationSuccessAlert: document.querySelector('#accountCreationSuccessAlert'),
     frmAccountCreate: document.querySelector('#frmAccountCreate'),
-    btnCreateAccount: document.querySelector('#btnCreateAccount'),
     inputName: document.querySelector('#inputName'),
     inputEmail: document.querySelector('#inputEmail'),
     inputPassword: document.querySelector('#inputPassword'),
     inputPasswordRetype: document.querySelector('#inputPasswordRetype'),
+    btnCreateAccount: document.querySelector('#btnCreateAccount'),
     validateAccountCreate: validateAccountCreate,
 
+    eventValidationAlert: document.querySelector('#eventValidationAlert'),
+    eventCreationSuccessAlert: document.querySelector('#eventCreationSuccessAlert'),
+    frmEventCreate: document.querySelector('#frmEventCreate'),
+    inputEventName: document.querySelector('#inputEventName'),
+    inputEventType: document.querySelector('#inputEventType'),
+    inputEventHost: document.querySelector('#inputEventHost'),
     inputEventDateStart: document.querySelector('#inputEventDateStart'),
     inputEventDateEnd: document.querySelector('#inputEventDateEnd'),
+    inputEventGuestName: document.querySelector('#inputEventGuestName'),
+    eventGuestList: document.querySelector('#eventGuestList'),
+    inputEventLocation: document.querySelector('#inputEventLocation'),
+    inputEventGuestsNotification: document.querySelector('#inputEventGuestsNotification'),
+    btnCreateEvent: document.querySelector('#btnCreateEvent'),
+    validateEventCreate: validateEventCreate
+
   };
 
   app.init();
 
   function init () {
     app.attachEventListeners();
-
-    app.inputEventDateStart.min = "2026-05-05T16:15:23"; //FIXME
   }
 
   function attachEventListeners() {
@@ -99,6 +109,36 @@
           });
         };
     });
+
+    app.btnCreateEvent.addEventListener('click', event => {
+      event.preventDefault();
+
+      app.validateEventCreate();
+
+      let hasErrors = app.invalidInputs.length > 0;
+
+      if (hasErrors) {
+        app.invalidInputs.map(elem => elem.parentElement.classList.add('has-warning'));
+        app.eventValidationAlert.removeAttribute('hidden');
+      } else {
+
+        console.log('deu bom!');
+
+        // app.user.name = inputName.value;
+        // app.user.email = inputEmail.value;
+        // app.user.password = inputPassword.value;
+        //
+        // localforage.setItem('loggedUser',
+        //   JSON.stringify(app.user)).then(value => {
+        //     app.frmAccountCreate.setAttribute('hidden', 'hidden');
+        //     app.accountCreationSuccessAlert.removeAttribute('hidden');
+        //
+        //     setTimeout(() => {
+        //       app.accountCreationSuccessAlert.parentElement.setAttribute('hidden', 'hidden');
+        //     }, 3000);
+        //   });
+        }
+    });
   }
 
   function validateAccountCreate() {
@@ -115,6 +155,22 @@
     shouldBeAValidPassword(app.inputPassword);
     shouldBeEqualsPasswords(app.inputPassword, app.inputPasswordRetype);
 
+  }
+
+  function validateEventCreate() {
+
+    prepareValidation();
+
+    shouldNotBeEmpty(app.inputEventName);
+    shouldNotBeEmpty(app.inputEventType);
+    shouldNotBeEmpty(app.inputEventHost);
+    shouldNotBeEmpty(app.inputEventDateStart);
+    shouldNotBeEmpty(app.inputEventDateEnd);
+    shouldNotBeEmpty(app.inputEventLocation);
+
+    // shouldHaveGuests(app.eventGuestList); FIXME
+
+    // shouldDateEndAfterDateStart
   }
 
   function shouldNotBeEmpty(elem) {
@@ -148,6 +204,7 @@
   function prepareValidation() {
     app.invalidInputs = [];
     app.validationAlert.setAttribute('hidden', 'hidden');
+    app.eventValidationAlert.setAttribute('hidden', 'hidden');
     Array.from(document.querySelectorAll('.has-warning')).forEach(elem => elem.classList.remove('has-warning'));
   }
 
