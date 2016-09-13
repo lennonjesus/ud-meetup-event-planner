@@ -49,6 +49,11 @@
 
   function init () {
     app.attachEventListeners();
+
+    localforage.getItem('events').then(events => {
+      app.events = JSON.parse(events);
+    });
+
   }
 
   function attachEventListeners() {
@@ -123,21 +128,34 @@
         app.eventValidationAlert.removeAttribute('hidden');
       } else {
 
-        console.log('deu bom!');
+        if (!app.events) {
+          app.events = [];
+        }
 
-        // app.user.name = inputName.value;
-        // app.user.email = inputEmail.value;
-        // app.user.password = inputPassword.value;
-        //
-        // localforage.setItem('loggedUser',
-        //   JSON.stringify(app.user)).then(value => {
-        //     app.frmAccountCreate.setAttribute('hidden', 'hidden');
-        //     app.accountCreationSuccessAlert.removeAttribute('hidden');
-        //
-        //     setTimeout(() => {
-        //       app.accountCreationSuccessAlert.parentElement.setAttribute('hidden', 'hidden');
-        //     }, 3000);
-        //   });
+        let event = {
+          name: inputEventName.value,
+          type: inputEventType.value,
+          host: inputEventHost.value,
+          dateStart: moment(inputEventDateStart.value),
+          dateEnd: moment(inputEventDateEnd.value),
+          // guestList: eventGuestList.value, //FIXME
+          locationAddress: inputEventLocation.value,
+          notification: inputEventGuestsNotification.value
+        }
+
+        console.log(app.events);
+
+        app.events.push(event);
+
+        localforage.setItem('events',
+          JSON.stringify(app.events)).then(value => {
+            app.frmEventCreate.setAttribute('hidden', 'hidden');
+            app.eventCreationSuccessAlert.removeAttribute('hidden');
+
+            setTimeout(() => {
+              app.eventCreationSuccessAlert.parentElement.setAttribute('hidden', 'hidden');
+            }, 3000);
+          });
         }
     });
   }
@@ -169,7 +187,7 @@
     shouldNotBeEmpty(app.inputEventDateEnd);
     shouldNotBeEmpty(app.inputEventLocation);
 
-    shouldHaveGuests();
+    // shouldHaveGuests(); //FIXME
 
     shouldDateEndAfterDateStart(app.inputEventDateStart, app.inputEventDateEnd);
   }
