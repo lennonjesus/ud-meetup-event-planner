@@ -201,18 +201,9 @@
     }
   }
 
-  // FIXME
   function shouldDateEndAfterDateStart(elem1, elem2) {
-
-    let start = new Date(elem1.value);
-    let end = new Date(elem2.value);
-
-    console.log(start);
-    console.log(end);
-
-    if (start < end) {
+    if (moment(elem1.value).isAfter(elem2.value)) {
       app.invalidInputs.push(elem2);
-      console.log('invalid');
     }
   }
 

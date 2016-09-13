@@ -16,6 +16,7 @@
   ],
   "dependencies": {
     "bootstrap-material-design": "^0.5.10",
-    "localforage": "^1.4.2"
+    "localforage": "^1.4.2",
+    "moment": "momentjs#^2.15.0"
   }
 }
