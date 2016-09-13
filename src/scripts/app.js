@@ -36,7 +36,8 @@
     inputEventDateStart: document.querySelector('#inputEventDateStart'),
     inputEventDateEnd: document.querySelector('#inputEventDateEnd'),
     inputEventGuestName: document.querySelector('#inputEventGuestName'),
-    eventGuestList: document.querySelector('#eventGuestList'),
+    eventGuestListContainer: document.querySelector('#eventGuestListContainer'),
+    eventGuestList: document.querySelectorAll('.guest-entry'),
     inputEventLocation: document.querySelector('#inputEventLocation'),
     inputEventGuestsNotification: document.querySelector('#inputEventGuestsNotification'),
     btnCreateEvent: document.querySelector('#btnCreateEvent'),
@@ -168,7 +169,7 @@
     shouldNotBeEmpty(app.inputEventDateEnd);
     shouldNotBeEmpty(app.inputEventLocation);
 
-    // shouldHaveGuests(app.eventGuestList); FIXME
+    shouldHaveGuests();
 
     shouldDateEndAfterDateStart(app.inputEventDateStart, app.inputEventDateEnd);
   }
@@ -204,6 +205,13 @@
   function shouldDateEndAfterDateStart(elem1, elem2) {
     if (moment(elem1.value).isAfter(elem2.value)) {
       app.invalidInputs.push(elem2);
+    }
+  }
+
+  function shouldHaveGuests() {
+    if (app.eventGuestList.length === 0) {
+      app.invalidInputs.push(app.eventGuestListContainer);
+      app.invalidInputs.push(app.inputEventGuestName.parentElement);
     }
   }
 
